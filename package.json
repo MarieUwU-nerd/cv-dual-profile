@@ -1,0 +1,15 @@
+{
+  "name": "cv-dual-profile",
+  "version": "1.0.0",
+  "description": "Site CV One-page moderne à Double Profil pour Marie N.",
+  "main": "js/script.js",
+  "scripts": {
+    "test": "node tests/test_interactivity.js"
+  },
+  "keywords": [],
+  "author": "Marie N.",
+  "license": "ISC",
+  "devDependencies": {
+    "jsdom": "^24.0.0"
+  }
+}
