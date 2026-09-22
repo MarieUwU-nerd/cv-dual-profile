@@ -46,5 +46,5 @@ npm test
 ---
 
 ## ⚠️ Notes importantes pour Marie N.
-1. **Numéro de téléphone :** Dans `index.html` (ligne 448), remplacez le numéro fictif `+33 (0)6 00 00 00 00` et le lien d'appel `tel:+33000000000` par vos véritables coordonnées.
+1. **Numéro de téléphone :** Le numéro de téléphone correct est `+33 (0)6 30 31 11 23`, à la fois dans le texte affiché et dans le lien `tel:+33630311123`.
 2. **Hébergement :** Le projet étant entièrement statique (HTML, CSS, JS), il peut être hébergé instantanément et gratuitement sur [GitHub Pages](https://pages.github.com/), [Vercel](https://vercel.com/), ou [Netlify]().
