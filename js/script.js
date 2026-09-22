@@ -1,5 +1,5 @@
 /**
- * Marie N. — Double Profil CV — Interactivité JavaScript & Accessibilité
+ * Marie N. — Double Profil CV — Animations Chorégraphiées GSAP & Accessibilité
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -9,56 +9,134 @@ document.addEventListener('DOMContentLoaded', () => {
   const profileItSection = document.getElementById('profile-it');
   const profileLogisticsSection = document.getElementById('profile-logistics');
   const copyEmailBtn = document.getElementById('copy-email-btn');
+  const slider = document.querySelector('.toggle-slider');
 
-  // État initial de l'application
+  // État de l'application
   let activeProfile = 'it'; // 'it' ou 'logistics'
+  let isAnimating = false;  // Évite les clics compulsifs pendant l'animation
+
+  // Détecte la préférence d'accessibilité pour les mouvements réduits
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
   /**
-   * Fonction de basculement de profil
-   * @param {string} profileId - 'toggle-it' ou 'toggle-logistics'
+   * Positionne initialement le slider GSAP en fonction du profil actif
    */
-  function toggleProfile(profileId) {
-    if (profileId === 'toggle-it' && activeProfile === 'it') return;
-    if (profileId === 'toggle-logistics' && activeProfile === 'logistics') return;
-
-    if (profileId === 'toggle-it') {
-      activeProfile = 'it';
-      
-      // Mise à jour des classes sur le body et les boutons
-      document.body.className = 'profile-it';
-      toggleItBtn.classList.add('active');
-      toggleLogisticsBtn.classList.remove('active');
-
-      // Mise à jour de l'affichage dans le DOM
-      profileItSection.classList.remove('hidden');
-      profileItSection.classList.add('active-profile');
-      profileLogisticsSection.classList.add('hidden');
-      profileLogisticsSection.classList.remove('active-profile');
-
-    } else if (profileId === 'toggle-logistics') {
-      activeProfile = 'logistics';
-
-      // Mise à jour des classes sur le body et les boutons
-      document.body.className = 'profile-logistics';
-      toggleLogisticsBtn.classList.add('active');
-      toggleItBtn.classList.remove('active');
-
-      // Mise à jour de l'affichage dans le DOM
-      profileLogisticsSection.classList.remove('hidden');
-      profileLogisticsSection.classList.add('active-profile');
-      profileItSection.classList.add('hidden');
-      profileItSection.classList.remove('active-profile');
+  function initSliderPosition() {
+    if (!slider || !toggleItBtn || !toggleLogisticsBtn) return;
+    
+    // Si GSAP est présent, on l'utilise pour positionner
+    if (typeof gsap !== 'undefined') {
+      if (activeProfile === 'it') {
+        gsap.set(slider, { x: 0 });
+      } else {
+        const targetX = toggleLogisticsBtn.offsetLeft - toggleItBtn.offsetLeft;
+        gsap.set(slider, { x: targetX });
+      }
+    } else {
+      // Fallback natif
+      if (activeProfile === 'it') {
+        slider.style.left = '0.35rem';
+      } else {
+        const container = document.querySelector('.toggle-container');
+        if (container) {
+          const halfWidth = container.clientWidth / 2;
+          slider.style.left = `calc(${halfWidth}px - 0.175rem)`;
+        }
+      }
     }
-
-    // Synchronisation ARIA
-    updateAriaStates();
-
-    // Placement du slider (fallback sans GSAP)
-    updateSliderFallback();
   }
 
   /**
-   * Mise à jour des attributs d'accessibilité ARIA
+   * Fonction principale de transition entre les profils (Chorégraphie GSAP)
+   * @param {string} targetProfile - 'it' ou 'logistics'
+   */
+  function switchProfile(targetProfile) {
+    if (targetProfile === activeProfile || isAnimating) return;
+    isAnimating = true;
+    activeProfile = targetProfile;
+
+    const isIt = targetProfile === 'it';
+    const activeSection = isIt ? profileLogisticsSection : profileItSection;
+    const incomingSection = isIt ? profileItSection : profileLogisticsSection;
+    const activeBtn = isIt ? toggleItBtn : toggleLogisticsBtn;
+    const inactiveBtn = isIt ? toggleLogisticsBtn : toggleItBtn;
+
+    // Calcul de la position du slider
+    const targetX = isIt ? 0 : toggleLogisticsBtn.offsetLeft - toggleItBtn.offsetLeft;
+
+    // Mettre à jour l'état visuel actif immédiatement sur les boutons
+    activeBtn.classList.add('active');
+    inactiveBtn.classList.remove('active');
+
+    // 1. SCÉNARIO AVEC MOUVEMENTS RÉDUITS (A11Y)
+    if (prefersReducedMotion.matches || typeof gsap === 'undefined') {
+      // Changement de classe immédiat pour la couleur d'accentuation
+      document.body.className = `profile-${targetProfile}`;
+
+      // Animation simplifiée en fondu de 0.15s
+      activeSection.style.display = 'none';
+      activeSection.classList.remove('active-profile');
+      
+      incomingSection.style.display = 'block';
+      incomingSection.classList.add('active-profile');
+      incomingSection.style.opacity = '1';
+      
+      updateAriaStates();
+      initSliderPosition();
+      isAnimating = false;
+      return;
+    }
+
+    // 2. SCÉNARIO PREMIUM CHORÉGRAPHIÉ (GSAP)
+    const tl = gsap.timeline({
+      onComplete: () => {
+        updateAriaStates();
+        isAnimating = false;
+      }
+    });
+
+    // Phase 1 : Disparition en cascade des cartes du profil actif (sortie)
+    const activeCards = activeSection.querySelectorAll('.profile-card');
+    
+    tl.to(activeCards, {
+      opacity: 0,
+      y: 20,
+      stagger: 0.03,
+      duration: 0.22,
+      ease: 'power2.in'
+    });
+
+    // Phase 2 : Glissement du commutateur et transition du thème sur le body
+    tl.to(slider, {
+      x: targetX,
+      duration: 0.45,
+      ease: 'power3.out',
+      onStart: () => {
+        // Applique la classe d'accentuation sur le body (déclenche les transitions CSS fluides)
+        document.body.className = `profile-${targetProfile}`;
+      }
+    }, '-=0.15'); // Léger chevauchement temporel
+
+    // Phase 3 : Alternance sémantique dans le DOM (masquer l'ancien, préparer le nouveau)
+    tl.set(activeSection, { display: 'none', className: 'profile-section' });
+    tl.set(incomingSection, { display: 'block', className: 'profile-section active-profile' });
+    
+    // Préparer les nouvelles cartes (invisibles et légèrement décalées vers le haut)
+    const incomingCards = incomingSection.querySelectorAll('.profile-card');
+    tl.set(incomingCards, { opacity: 0, y: -20 });
+
+    // Phase 4 : Apparition fluide en cascade du nouveau profil (entrée)
+    tl.to(incomingCards, {
+      opacity: 1,
+      y: 0,
+      stagger: 0.05,
+      duration: 0.45,
+      ease: 'power2.out'
+    });
+  }
+
+  /**
+   * Synchronisation des attributs ARIA pour l'accessibilité
    */
   function updateAriaStates() {
     if (activeProfile === 'it') {
@@ -77,51 +155,31 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /**
-   * Positionne le curseur du commutateur de façon native (fallback sans GSAP)
-   */
-  function updateSliderFallback() {
-    const slider = document.querySelector('.toggle-slider');
-    if (!slider) return;
-
-    if (activeProfile === 'it') {
-      slider.style.left = '0.35rem';
-    } else {
-      // Calcule dynamiquement la moitié de la largeur du conteneur
-      const container = document.querySelector('.toggle-container');
-      if (container) {
-        const halfWidth = container.clientWidth / 2;
-        slider.style.left = `calc(${halfWidth}px - 0.175rem)`;
-      }
-    }
-  }
-
-  /**
-   * Gestion de l'accessibilité clavier sur le Commutateur
-   * @param {KeyboardEvent} event 
+   * Gestion du clavier pour le commutateur
    */
   function handleKeyboardToggle(event) {
     if (event.key === ' ' || event.key === 'Enter') {
       event.preventDefault();
-      toggleProfile(event.target.id);
+      const targetId = event.target.id;
+      const targetProfile = targetId === 'toggle-it' ? 'it' : 'logistics';
+      switchProfile(targetProfile);
     }
   }
 
-  // Écouteurs d'événements pour le commutateur (clic)
+  // Enregistrement des événements sur le commutateur
   if (toggleItBtn && toggleLogisticsBtn) {
-    toggleItBtn.addEventListener('click', () => toggleProfile('toggle-it'));
-    toggleLogisticsBtn.addEventListener('click', () => toggleProfile('toggle-logistics'));
+    toggleItBtn.addEventListener('click', () => switchProfile('it'));
+    toggleLogisticsBtn.addEventListener('click', () => switchProfile('logistics'));
 
-    // Clavier
     toggleItBtn.addEventListener('keydown', handleKeyboardToggle);
     toggleLogisticsBtn.addEventListener('keydown', handleKeyboardToggle);
   }
 
-  // Copie d'email interactive
+  // Gestion de la copie d'email unifiée
   if (copyEmailBtn) {
     copyEmailBtn.addEventListener('click', () => {
       const emailText = 'contact@marie-n.fr';
       
-      // Utilisation de l'API Clipboard ou fallback
       if (navigator.clipboard && navigator.clipboard.writeText) {
         navigator.clipboard.writeText(emailText)
           .then(() => showCopySuccess())
@@ -132,17 +190,18 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  /**
-   * Notification visuelle du succès de la copie
-   */
   function showCopySuccess() {
-    const originalText = copyEmailBtn.querySelector('span') ? copyEmailBtn.querySelector('span').textContent : 'contact@marie-n.fr';
     const span = copyEmailBtn.querySelector('span');
-
     if (span) {
+      const originalText = span.textContent;
       span.textContent = 'Adresse copiée !';
       copyEmailBtn.classList.add('copy-success');
       
+      // Petit effet d'échelle via GSAP pour la confirmation "Waouh"
+      if (typeof gsap !== 'undefined') {
+        gsap.fromTo(copyEmailBtn, { scale: 0.95 }, { scale: 1, duration: 0.3, ease: 'back.out(2)' });
+      }
+
       setTimeout(() => {
         span.textContent = originalText;
         copyEmailBtn.classList.remove('copy-success');
@@ -150,13 +209,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  /**
-   * Fallback de copie de texte si navigator.clipboard n'est pas supporté (comme JSDOM)
-   */
   function fallbackCopyText(text) {
     const textArea = document.createElement('textarea');
     textArea.value = text;
-    textArea.style.position = 'fixed'; // Évite de faire scroller la page
+    textArea.style.position = 'fixed';
     textArea.style.left = '-999999px';
     document.body.appendChild(textArea);
     textArea.focus();
@@ -172,7 +228,13 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.removeChild(textArea);
   }
 
-  // Initialisation du positionnement du slider lors du chargement initial ou redimensionnement
-  updateSliderFallback();
-  window.addEventListener('resize', updateSliderFallback);
+  // Initialisation et adaptation responsive du slider
+  initSliderPosition();
+  window.addEventListener('resize', () => {
+    // Évite d'animer lors du redimensionnement, on ajuste juste la position instantanément
+    if (typeof gsap !== 'undefined' && slider) {
+      gsap.killTweensOf(slider);
+      initSliderPosition();
+    }
+  });
 });
