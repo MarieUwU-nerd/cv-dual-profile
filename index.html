@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Marie N. — Double Profil Professionnel</title>
+  <!-- Google Fonts: Inter & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="profile-it">
+
+  <!-- Background Glow FX -->
+  <div class="bg-glow" aria-hidden="true"></div>
+
+  <!-- Header unifié -->
+  <header class="main-header">
+    <div class="header-container">
+      <div class="brand">
+        <span class="logo-dot" aria-hidden="true"></span>
+        <span class="logo-text">Marie N.</span>
+      </div>
+      <!-- Contact CTA rapide -->
+      <a href="#contact" class="btn btn-outline header-contact-btn">Me contacter</a>
+    </div>
+  </header>
+
+  <!-- Hero Section & Sélecteur de profil -->
+  <section class="hero-section">
+    <div class="hero-container">
+      <h1 class="hero-title">Un profil, <span class="highlight-text">deux univers</span>.</h1>
+      <p class="hero-subtitle">
+        Explorez mes compétences selon vos besoins. Une identité guidée par le sens du service, l'autonomie et l'excellence opérationnelle.
+      </p>
+
+      <!-- Critères de recherche globaux (Socle Commun) -->
+      <div class="global-criteria">
+        <div class="criterion-tag">
+          <svg class="criterion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M12 2a8 8 0 0 0-8 8c0 5.25 8 12 8 12s8-6.75 8-12a8 8 0 0 0-8-8z"/>
+            <circle cx="12" cy="10" r="3"/>
+          </svg>
+          <span><strong>Mobilité active :</strong> Côtes-d'Armor ➔ Paris / Île-de-France</span>
+        </div>
+        <div class="criterion-tag">
+          <svg class="criterion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+            <polyline points="14 2 14 8 20 8"/>
+            <line x1="16" y1="13" x2="8" y2="13"/>
+            <line x1="16" y1="17" x2="8" y2="17"/>
+            <polyline points="10 9 9 9 8 9"/>
+          </svg>
+          <span><strong>Flexibilité :</strong> CDI non obligatoire (CDD, intérim, etc.)</span>
+        </div>
+        <div class="criterion-tag">
+          <svg class="criterion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          </svg>
+          <span><strong>Travail de nuit :</strong> Partiel ou complément d'activité</span>
+        </div>
+        <div class="criterion-tag">
+          <svg class="criterion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+          </svg>
+          <span>Emplois alimentaires acceptés</span>
+        </div>
+      </div>
+
+      <!-- Le Commutateur de Profil (Toggle Switch) -->
+      <div class="toggle-wrapper">
+        <div class="toggle-container" role="radiogroup" aria-label="Choisir le profil professionnel de Marie N.">
+          <div class="toggle-slider" aria-hidden="true"></div>
+          <button id="toggle-it" class="toggle-btn active" role="radio" aria-checked="true" tabindex="0">
+            <svg class="toggle-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <rect x="2" y="2" width="20" height="8" rx="2" ry="2"/>
+              <rect x="2" y="14" width="20" height="8" rx="2" ry="2"/>
+              <line x1="6" y1="6" x2="6.01" y2="6"/>
+              <line x1="6" y1="18" x2="6.01" y2="18"/>
+            </svg>
+            Informatique / Réseaux
+          </button>
+          <button id="toggle-logistics" class="toggle-btn" role="radio" aria-checked="false" tabindex="0">
+            <svg class="toggle-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <rect x="1" y="3" width="15" height="13"/>
+              <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/>
+              <circle cx="5.5" cy="18.5" r="2.5"/>
+              <circle cx="18.5" cy="18.5" r="2.5"/>
+            </svg>
+            Logistique / Polyvalence
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Enveloppe de Contenu Dynamique -->
+  <main id="profile-content">
+
+    <!-- ================= PROFIL 1 : INFORMATIQUE ================= -->
+    <section id="profile-it" class="profile-section active-profile" aria-hidden="false">
+      <div class="section-container">
+        
+        <!-- Présentation Introductive -->
+        <div class="profile-intro-card profile-card">
+          <h2>Technicienne Systèmes &amp; Réseaux / Support N2</h2>
+          <p>
+            Recherche d'un poste stable dans une infrastructure après une expérience enrichissante en TPE. Passionnée par l'administration, le support et la sécurité, j'ai le sens du service client (Helpdesk, diagnostic). Mon objectif est d'intégrer une équipe dynamique au sein de laquelle je pourrai veiller à la sécurité, à la performance et à la disponibilité des systèmes et réseaux tout en apportant une assistance fiable de niveau 2.
+          </p>
+        </div>
+
+        <!-- Compétences clés -->
+        <div class="skills-block">
+          <h3 class="block-title">Compétences clés</h3>
+          <div class="skills-grid">
+            <div class="skill-card profile-card">
+              <div class="skill-icon-wrapper">
+                <svg class="skill-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                  <path d="M8 10h.01M12 10h.01M16 10h.01"/>
+                </svg>
+              </div>
+              <h4>Support N1/N2 &amp; Helpdesk</h4>
+              <p>Diagnostic d'incidents, gestion de tickets, prise en main à distance, relation client d'excellence.</p>
+            </div>
+
+            <div class="skill-card profile-card">
+              <div class="skill-icon-wrapper">
+                <svg class="skill-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <ellipse cx="12" cy="5" rx="9" ry="3"/>
+                  <path d="M3 5v6c0 1.66 4 3 9 3s9-1.34 9-3V5"/>
+                  <path d="M3 11v6c0 1.66 4 3 9 3s9-1.34 9-3v-6"/>
+                </svg>
+              </div>
+              <h4>Virtualisation Proxmox</h4>
+              <p>Déploiement d'hyperviseurs, gestion de machines virtuelles (VM) et de conteneurs LXC.</p>
+            </div>
+
+            <div class="skill-card profile-card">
+              <div class="skill-icon-wrapper">
+                <svg class="skill-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="2" y="2" width="20" height="8" rx="2" ry="2"/>
+                  <rect x="2" y="14" width="20" height="8" rx="2" ry="2"/>
+                  <line x1="6" y1="6" x2="6.01" y2="6"/>
+                  <line x1="6" y1="18" x2="6.01" y2="18"/>
+                </svg>
+              </div>
+              <h4>Conteneurs Docker</h4>
+              <p>Création d'images, configuration de Docker-compose, orchestration légère de services d'infrastructure.</p>
+            </div>
+
+            <div class="skill-card profile-card">
+              <div class="skill-icon-wrapper">
+                <svg class="skill-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/>
+                </svg>
+              </div>
+              <h4>SaaS &amp; Admin Workspace</h4>
+              <p>Administration de Google Workspace et Microsoft 365 (gestion des comptes, sécurité, partages).</p>
+            </div>
+
+            <div class="skill-card profile-card">
+              <div class="skill-icon-wrapper">
+                <svg class="skill-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M5 12.55a11 11 0 0 1 14.08 0"/>
+                  <path d="M1.42 9a16 16 0 0 1 21.16 0"/>
+                  <path d="M8.53 16.11a6 6 0 0 1 6.95 0"/>
+                  <circle cx="12" cy="20" r="1"/>
+                </svg>
+              </div>
+              <h4>Réseaux &amp; Sécurité Cisco</h4>
+              <p>Routage, commutation L3, notions solides basées sur le programme CCNA 1.</p>
+            </div>
+
+            <div class="skill-card profile-card">
+              <div class="skill-icon-wrapper">
+                <svg class="skill-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                  <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                </svg>
+              </div>
+              <h4>Pare-feu pfSense</h4>
+              <p>Filtrage de paquets, règles NAT, configuration VPN de site à site et accès distant sécurisé.</p>
+            </div>
+
+            <div class="skill-card profile-card">
+              <div class="skill-icon-wrapper">
+                <svg class="skill-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="4" y="4" width="16" height="16" rx="2"/>
+                  <path d="M9 22V12h6v10"/>
+                  <path d="M8 8h8"/>
+                </svg>
+              </div>
+              <h4>Systèmes Linux &amp; Windows</h4>
+              <p>Maîtrise de Debian, Ubuntu et Arch Linux. Administration d'Active Directory sur Windows Server.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Expériences -->
+        <div class="experiences-block">
+          <h3 class="block-title">Expériences professionnelles</h3>
+          <div class="timeline">
+            
+            <div class="timeline-item profile-card">
+              <div class="timeline-dot" aria-hidden="true"></div>
+              <div class="timeline-header">
+                <span class="timeline-date">Nov 2024 — Présent (11 mois)</span>
+                <h4 class="timeline-title">Accompagnement IT &amp; Support Freelance</h4>
+                <span class="timeline-company">Amour Breton</span>
+              </div>
+              <p class="timeline-desc">
+                Gestion de l'infrastructure informatique de l'entreprise, support utilisateur, maintenance préventive et curative des matériels et logiciels. Administration des comptes collaboratifs Google Workspace et sécurisation des postes clients.
+              </p>
+            </div>
+
+            <div class="timeline-item profile-card">
+              <div class="timeline-dot" aria-hidden="true"></div>
+              <div class="timeline-header">
+                <span class="timeline-date">Avr 2024 — Juil 2024 (4 mois)</span>
+                <h4 class="timeline-title">Stage Administratrice d'infrastructures sécurisées</h4>
+                <span class="timeline-company">VoltR</span>
+              </div>
+              <p class="timeline-desc">
+                Déploiement réseau, mise en sécurité de serveurs, installation d'outils de surveillance d'infrastructures (Zabbix/Grafana), configuration pfSense et rédaction de documentations d'exploitation.
+              </p>
+            </div>
+
+            <div class="timeline-item profile-card">
+              <div class="timeline-dot" aria-hidden="true"></div>
+              <div class="timeline-header">
+                <span class="timeline-date">Fév 2024 (1 mois)</span>
+                <h4 class="timeline-title">Stage d'Immersion en ESN</h4>
+                <span class="timeline-company">S.F.2.I.</span>
+              </div>
+              <p class="timeline-desc">
+                Support client de proximité de niveau 1/2 auprès des techniciens d'infrastructure de l'ESN. Résolution d'incidents matériels (postes de travail, imprimantes, réseaux locaux) et logiciels en environnement Microsoft et Linux.
+              </p>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Formations -->
+        <div class="education-block">
+          <h3 class="block-title">Formation</h3>
+          <div class="timeline">
+            <div class="timeline-item profile-card">
+              <div class="timeline-dot" aria-hidden="true"></div>
+              <div class="timeline-header">
+                <span class="timeline-date">2024 — 2025</span>
+                <h4 class="timeline-title">Titre Professionnel RNCP37680 - Administrateur d'infrastructures sécurisées</h4>
+                <span class="timeline-company">AFPA Brest</span>
+              </div>
+              <p class="timeline-desc">
+                Formation certifiante de niveau 6 (équivalent Bac+3/4). Maîtrise des architectures réseaux sécurisées, de la virtualisation avancée, de l'administration système Windows Server et Linux, ainsi que de la cybersécurité appliquée aux PME/ETI.
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================= PROFIL 2 : LOGISTIQUE & POLYVALENCE ================= -->
+    <section id="profile-logistics" class="profile-section hidden" aria-hidden="true">
+      <div class="section-container">
+        
+        <!-- Présentation Introductive -->
+        <div class="profile-intro-card profile-card">
+          <h2>Chauffeuse-Livreuse, Factrice et Métiers Polyvalents</h2>
+          <p>
+            Passionnée par la conduite et le contact humain. Autonome, rigoureuse et habituée à mener des tournées rythmées à bord de véhicules utilitaires. Ayant le sens du service public et une grande capacité d'adaptation, je m'engage à apporter des solutions logistiques fiables, ponctuelles, dans le respect absolu des consignes de sécurité routière et de la manutention des marchandises.
+          </p>
+        </div>
+
+        <!-- Compétences clés -->
+        <div class="skills-block">
+          <h3 class="block-title">Compétences &amp; Atouts logistiques</h3>
+          <div class="skills-grid">
+            <div class="skill-card profile-card">
+              <div class="skill-icon-wrapper">
+                <svg class="skill-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"/>
+                  <circle cx="12" cy="12" r="6"/>
+                  <circle cx="12" cy="12" r="2"/>
+                </svg>
+              </div>
+              <h4>Sécurité Routière &amp; Conduite</h4>
+              <p>Rigueur au volant, respect du Code de la route, éco-conduite et gestion parfaite des véhicules utilitaires légers.</p>
+            </div>
+
+            <div class="skill-card profile-card">
+              <div class="skill-icon-wrapper">
+                <svg class="skill-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"/>
+                  <line x1="9" y1="3" x2="9" y2="18"/>
+                  <line x1="15" y1="6" x2="15" y2="21"/>
+                </svg>
+              </div>
+              <h4>Gestion de Tournée Autonome</h4>
+              <p>Optimisation des parcours, lecture de carte, tri préalable des colis ou courriers et flexibilité face aux aléas de trafic.</p>
+            </div>
+
+            <div class="skill-card profile-card">
+              <div class="skill-icon-wrapper">
+                <svg class="skill-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"/>
+                  <polyline points="12 6 12 12 16 14"/>
+                </svg>
+              </div>
+              <h4>Ponctualité &amp; Rigueur</h4>
+              <p>Habituée aux horaires stricts, respect des délais de livraison et sens des priorités opérationnelles.</p>
+            </div>
+
+            <div class="skill-card profile-card">
+              <div class="skill-icon-wrapper">
+                <svg class="skill-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+                  <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+                </svg>
+              </div>
+              <h4>Manutention &amp; Port de charges</h4>
+              <p>Excellente condition physique, posture ergonomique et application stricte des règles de sécurité au travail (gestes et postures).</p>
+            </div>
+
+            <div class="skill-card profile-card">
+              <div class="skill-icon-wrapper">
+                <svg class="skill-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                  <circle cx="9" cy="7" r="4"/>
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                </svg>
+              </div>
+              <h4>Relation Client &amp; Service</h4>
+              <p>Qualité du contact, politesse, garant de l'image de marque de l'entreprise lors de la livraison.</p>
+            </div>
+
+            <div class="skill-card profile-card">
+              <div class="skill-icon-wrapper">
+                <svg class="skill-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                  <polyline points="14 2 14 8 20 8"/>
+                </svg>
+              </div>
+              <h4>Permis B &amp; Atouts</h4>
+              <p>Détentrice du Permis B depuis plusieurs années, véhicule personnel disponible, grande réactivité face aux imprévus.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Expériences -->
+        <div class="experiences-block">
+          <h3 class="block-title">Expériences professionnelles</h3>
+          <div class="timeline">
+            
+            <div class="timeline-item profile-card">
+              <div class="timeline-dot" aria-hidden="true"></div>
+              <div class="timeline-header">
+                <span class="timeline-date">Juin 2023 — Mars 2024 (9 mois)</span>
+                <h4 class="timeline-title">Veilleuse de nuit</h4>
+                <span class="timeline-company">Belambra Clubs</span>
+              </div>
+              <p class="timeline-desc">
+                Sécurisation des locaux, rondes de surveillance, accueil tardif des vacanciers et gestion autonome des urgences de nuit. Gestion critique des installations et infrastructures face aux imprévus majeurs lors du passage de la tempête Ciaran en Bretagne.
+              </p>
+            </div>
+
+            <div class="timeline-item profile-card">
+              <div class="timeline-dot" aria-hidden="true"></div>
+              <div class="timeline-header">
+                <span class="timeline-date">Janv 2023 — Avr 2023 (4 mois)</span>
+                <h4 class="timeline-title">Assistante préparatrice sur ligne d'impression</h4>
+                <span class="timeline-company">Ouest-Pack</span>
+              </div>
+              <p class="timeline-desc">
+                Manutention lourde, approvisionnement constant en matières premières sur les lignes de production, réglage machine de niveau 1, contrôle qualité rigoureux et nettoyage du poste selon les normes d'hygiène de l'emballage industriel.
+              </p>
+            </div>
+
+            <div class="timeline-item profile-card">
+              <div class="timeline-dot" aria-hidden="true"></div>
+              <div class="timeline-header">
+                <span class="timeline-date">Nov 2022 — Déc 2022 (2 mois)</span>
+                <h4 class="timeline-title">Ouvrière de nettoyage</h4>
+                <span class="timeline-company">Divers sites industriels et tertiaires</span>
+              </div>
+              <p class="timeline-desc">
+                Entretien approfondi et remise en état de bureaux administratifs, locaux industriels et de santé. Utilisation d'équipements spécialisés de nettoyage, port des EPI et application rigoureuse des règles de sécurité chimique et sanitaire.
+              </p>
+            </div>
+
+            <div class="timeline-item profile-card">
+              <div class="timeline-dot" aria-hidden="true"></div>
+              <div class="timeline-header">
+                <span class="timeline-date">Fév 2022 — Sept 2022 (8 mois)</span>
+                <h4 class="timeline-title">Service Civique en EHPAD</h4>
+                <span class="timeline-company">Établissement médico-social</span>
+              </div>
+              <p class="timeline-desc">
+                Accompagnement humain des résidents, animation d'ateliers créatifs et cognitifs, écoute active. Transport et accompagnement de proximité des personnes à mobilité réduite (PMR) pour leurs sorties ou rendez-vous.
+              </p>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Section de Contact Unifiée / Pied de Page -->
+  <footer id="contact" class="main-footer">
+    <div class="footer-container">
+      <div class="footer-content">
+        <h2>Entrons en <span class="highlight-text">contact</span></h2>
+        <p>
+          Que vous soyez à la recherche d'un profil technique rigoureux pour vos infrastructures systèmes &amp; réseaux ou d'un renfort logistique et polyvalent fiable pour vos tournées ou activités nocturnes, je suis prête à relever le défi.
+        </p>
+        
+        <div class="contact-actions">
+          <!-- Bouton de copie email avec confirmation -->
+          <div class="copy-email-wrapper">
+            <button id="copy-email-btn" class="btn btn-primary" aria-label="Copier l'adresse email de Marie N. dans le presse-papier">
+              <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+              </svg>
+              <span>contact@marie-n.fr</span>
+            </button>
+          </div>
+
+          <!-- Bouton direct mailto -->
+          <a href="mailto:contact@marie-n.fr" class="btn btn-outline" aria-label="Envoyer directement un email à Marie N.">
+            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+              <polyline points="22,6 12,13 2,6"/>
+            </svg>
+            Écrire un e-mail
+          </a>
+        </div>
+        
+        <div class="phone-and-legal">
+          <p class="phone-block">
+            Téléphone : <a href="tel:+33000000000" class="phone-link">+33 (0)6 00 00 00 00</a>
+          </p>
+          <p class="legal-text">
+            &copy; 2026 Marie N. — Conçu avec passion &amp; précision. Tous droits réservés.
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- GSAP Library & Script -->
+  <!-- On inclura GSAP à la Task 5. Le fichier script.js gérera la transition -->
+  <script src="js/script.js"></script>
+</body>
+</html>
